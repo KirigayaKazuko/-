@@ -274,28 +274,32 @@
     <div class="container mx-auto px-4 md:px-6">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold mb-4">联系我们</h2>
-        <p class="text-gray-600">欢迎咨询产品、代理合作相关事宜</p>
+        <p class="text-gray-600">欢迎咨询产品、个人送保、代理合作相关事宜</p>
       </div>
       
-      <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-md p-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div class="text-center">
-            <i class="fa fa-phone text-2xl text-primary mb-3"></i>
-            <h4 class="font-bold mb-2">电话咨询</h4>
-            <p class="text-gray-600">13339020222</p>
-          </div>
+    <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-md p-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- 微信咨询（点击弹出二维码） -->
+        <div class="text-center">
+          <i class="fa fa-weixin text-2xl text-primary mb-3"></i>
+          <h4 class="font-bold mb-2">微信咨询</h4>
+          <button id="wechatBtn" class="text-primary hover:underline">
+            点击查看二维码
+          </button>
+        </div>
           <div class="text-center">
             <i class="fa fa-envelope text-2xl text-primary mb-3"></i>
-            <h4 class="font-bold mb-2">邮箱联系</h4>
+            <h4 class="font-bold mb-2">邮箱咨询</h4>
             <p class="text-gray-600">378843450@qq.com</p>
           </div>
           <div class="text-center">
             <i class="fa fa-map-marker text-2xl text-primary mb-3"></i>
             <h4 class="font-bold mb-2">公司地址</h4>
-            <p class="text-gray-600">安徽省蚌埠市蚌山区钓鱼台生活城</p>
+            <p class="text-gray-600">安徽省蚌埠市蚌山区</p>
           </div>
         </div>
         
+
         <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <input type="text" placeholder="您的姓名" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
@@ -311,6 +315,44 @@
           </div>
         </form>
       </div>
+
+      <!-- 二维码弹窗 -->
+     <div id="qrcodeModal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white p-6 rounded-xl shadow-lg max-w-sm w-full mx-4">
+          <div class="text-center">
+            <h3 class="text-xl font-bold mb-4">微信扫码咨询</h3>
+            <!-- 替换为你的二维码图片 -->
+            <img src="https://i.imgs.ovh/2026/04/18/ZBbpK9.jpeg" alt="ZBbpK9.jpeg" border="0"  class="w-64 h-64 mx-auto mb-4 rounded-lg">
+            <p class="text-gray-600 mb-4">长按识别二维码添加微信</p>
+            <button id="closeModal" class="px-6 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">
+              关闭
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 弹窗脚本 -->
+    <script>
+      const wechatBtn = document.getElementById('wechatBtn');
+      const qrcodeModal = document.getElementById('qrcodeModal');
+      const closeModal = document.getElementById('closeModal');
+    
+      wechatBtn.addEventListener('click', () => {
+        qrcodeModal.classList.remove('hidden');
+      });
+    
+      closeModal.addEventListener('click', () => {
+        qrcodeModal.classList.add('hidden');
+      });
+    
+      // 点击遮罩关闭弹窗
+      qrcodeModal.addEventListener('click', (e) => {
+        if (e.target === qrcodeModal) {
+          qrcodeModal.classList.add('hidden');
+        }
+      });
+    </script>
     </div>
   </section>
 
